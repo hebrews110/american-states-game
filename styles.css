@@ -1,0 +1,190 @@
+
+* {
+    font-family: Helvetica, Arial, sans-serif;
+}
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Opera and Firefox */
+}
+
+
+#game-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    background: lightskyblue;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 100%;
+    overflow: hidden;
+}
+
+html, body, #game-container {
+    width: 100%;
+    height: 100%;
+    min-width: 100%;
+    min-height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    z-index: 1;
+    box-sizing: border-box;
+}
+
+.body,
+.wrapper {
+  /* Break the flow */
+  position: absolute;
+  top: 0px;
+
+  /* Give them all the available space */
+  width: 100%;
+  height: 100%;
+
+  /* Remove the margins if any */
+  margin: 0;
+
+  /* Allow them to scroll down the document */
+  overflow: hidden;
+}
+
+.body {
+  /* Sending body at the bottom of the stack */
+  z-index: 1;
+}
+
+.wrapper {
+  /* Making the wrapper stack above the body */
+  z-index: 2;
+}
+
+.svg-map-container {
+    max-width: 1000px;
+    width: 100%;
+    min-width: 0;
+    overflow: auto;
+    flex: 0 1 auto;
+}
+.svg-map-container svg {
+    min-width: 600px;
+}
+
+.state-path.state-path-drag {
+    stroke: black;
+    stroke-width: 0.5;
+    shape-rendering:geometricPrecision;
+}
+.state-path {
+    stroke: none;
+    stroke-width: 2;
+    transition: fill 0.1s linear;
+    outline: none;
+    outline-style:none;
+    box-shadow:none;
+    transform-origin: center center;
+    transform-box: fill-box;
+    border-color:transparent;
+}
+.state-path-with-stroke {
+    pointer-events: none;
+}
+.state-hide-borders .state-path-with-stroke {
+    stroke: gray;
+}
+
+.state-hide-borders .state-correct {
+    fill: white;
+}
+.state-hide-borders .state-correct.state-path.state-path-with-stroke {
+    stroke: black;
+}
+.state-hide-borders .state-path:not(.state-correct) {
+    stroke: gray;
+    fill: gray;
+}
+.state-path.state-path-with-stroke {
+    stroke: black;
+}
+.state-path:not(.state-correct) {
+    fill: white;
+}
+.state title {
+    pointer-events: none;
+}
+.state-correct {
+    fill: darkgray;
+    z-index: 1;
+}
+
+@keyframes state-incorrect {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.5);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+.state .state-incorrect-hint, .state.state-hide-borders .state-incorrect-hint {
+    fill: rgb(255, 150, 150);
+    animation-name: state-incorrect;
+    animation-duration: 1s;
+}
+.state.state-hide-borders .state-incorrect-hint:not(.state-correct) {
+    stroke: rgb(255, 150, 150);
+}
+.state-interactive *:not(.state-correct) {
+    cursor: pointer;
+}
+.state-interactive *:hover:not(.state-correct) {
+    fill: lightgray;
+}
+.state-interactive *:active:not(.state-correct) {
+    fill: gray;
+}
+.instructions {
+    font-size: 2rem;
+    flex: none;
+    transform: scale(1);
+    transform-origin: top center;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+@keyframes instructions-game-finished {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.5);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+.instructions.game-finished {
+    animation-name: instructions-game-finished;
+    animation-duration: 2s;
+}
+.svg-map-container {
+    transform-origin: center center;
+    transform: scale(1) rotate(0deg);
+    transition: transform 2s linear;
+}
+.svg-map-container.game-finished {
+    overflow: hidden;
+    pointer-events: none;
+    transform: scale(0) rotate(360deg);
+}

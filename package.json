@@ -1,0 +1,28 @@
+{
+  "name": "american-states-game",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "live-server --port=8080 --no-browser --watch=index.html,built.txt,styles.css,colors.js"
+  },
+  "dependencies": {
+    "core-js": "^3.6.4",
+    "query-string": "^5.1.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "svg-path-bounds": "^1.0.1",
+    "tippy.js": "^5.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.17",
+    "@types/react-dom": "^16.9.4",
+    "event-hooks-webpack-plugin": "^2.1.5",
+    "fork-ts-checker-webpack-plugin": "^4.0.1",
+    "ts-loader": "^6.2.1",
+    "tslib": "^1.10.0",
+    "typescript": "^3.7.5",
+    "webpack": "^4.41.5",
+    "webpack-bundle-analyzer": "^3.6.0",
+    "webpack-cli": "^3.3.10"
+  }
+}

@@ -1,0 +1,28 @@
+<!-- 1.6 -->
+<!doctype html>
+
+    <html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'/>
+        <title>State Surveyor</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap-reboot.min.css"/>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="tippy.css">
+    </head>
+
+    <body class="body">
+        <div class="wrapper">
+            <!-- The root React component is mounted in this div. Don't remove it. -->
+            <div id="game-container">
+            </div>
+        </div>
+        <!-- bring in the core game code after the overrides -->
+        <script src="currentExecutingScript.min.js"></script>
+        <script src="rv-polyfill.js?key=KZ652opR"></script>
+        <script src="polyfills.js" async defer></script>
+        <script src="core_script_compiled.js" async defer></script>
+    </body>
+
+</html>
