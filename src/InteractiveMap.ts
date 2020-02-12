@@ -65,6 +65,7 @@ function customTimeout(fn: Function, timeout: number) {
 }
 
 const rv = (window as any).responsiveVoice;
+const voice = "US English Male";
 
 function handleCorrectness(code: string, e: SVGElement) {
     const oldE = e;
@@ -89,7 +90,7 @@ function handleCorrectness(code: string, e: SVGElement) {
             instructions.textContent = `Yes, that's ${getQuestionName(currentStateCode)}.`;
         else if(currentMode == MODE_LEARN) {
             instructions.textContent = `That's ${getFullName(code)}.`;
-            rv?.speak(stateHash[code]);
+            rv?.speak(stateHash[code], voice);
             listOfStatesToRun.splice(listOfStatesToRun.indexOf(code), 1);
         } else if(currentMode == MODE_DRAG) {
             instructions.textContent = "Great job!";
@@ -141,7 +142,7 @@ function onStateClick(e: MouseEvent) {
     const t = e.currentTarget as SVGElement;
     const stateCode = t.getAttribute("id");
     if(hasClass(t, "state-correct")) {
-        rv?.speak(getFullName(stateCode));
+        rv?.speak(getFullName(stateCode), voice);
         window.alert(getFullName(stateCode));
         return;
     }
