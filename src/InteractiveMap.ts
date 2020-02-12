@@ -86,10 +86,10 @@ function handleCorrectness(code: string, e: SVGElement) {
         throw new Error("Unexpected mode: " + currentMode);
     if(isCorrect) {
         if(currentMode == MODE_CLICK)
-            instructions.textContent = `Yes, that's ${getQuestionName(currentStateCode)}`;
+            instructions.textContent = `Yes, that's ${getQuestionName(currentStateCode)}.`;
         else if(currentMode == MODE_LEARN) {
-            instructions.textContent = `That's ${getFullName(code)}`;
-            rv.speak(stateHash[code]);
+            instructions.textContent = `That's ${getFullName(code)}.`;
+            rv?.speak(stateHash[code]);
             listOfStatesToRun.splice(listOfStatesToRun.indexOf(code), 1);
         } else if(currentMode == MODE_DRAG) {
             instructions.textContent = "Great job!";
@@ -106,7 +106,7 @@ function handleCorrectness(code: string, e: SVGElement) {
         }
     } else {
         if(currentMode != MODE_DRAG)
-            instructions.textContent = `No, that's ${getQuestionName(code)}`;
+            instructions.textContent = `No, that's ${getQuestionName(code)}.`;
         else
             instructions.textContent = `Try again!`;
         numTries++;
@@ -141,7 +141,7 @@ function onStateClick(e: MouseEvent) {
     const t = e.currentTarget as SVGElement;
     const stateCode = t.getAttribute("id");
     if(hasClass(t, "state-correct")) {
-        rv.speak(getFullName(stateCode));
+        rv?.speak(getFullName(stateCode));
         window.alert(getFullName(stateCode));
         return;
     }
