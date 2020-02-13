@@ -87,7 +87,7 @@ function handleCorrectness(code: string, e: SVGElement) {
         throw new Error("Unexpected mode: " + currentMode);
     if(isCorrect) {
         if(currentMode == MODE_CLICK)
-            instructions.textContent = `Yes, that's ${getQuestionName(currentStateCode)}.`;
+            instructions.textContent = `Yes, that's ${getFullName(currentStateCode)}.`;
         else if(currentMode == MODE_LEARN) {
             instructions.textContent = `That's ${getFullName(code)}.`;
             rv?.speak(stateHash[code], voice);
@@ -107,7 +107,7 @@ function handleCorrectness(code: string, e: SVGElement) {
         }
     } else {
         if(currentMode != MODE_DRAG)
-            instructions.textContent = `No, that's ${getQuestionName(code)}.`;
+            instructions.textContent = `No, that's ${getFullName(code)}.`;
         else
             instructions.textContent = `Try again!`;
         numTries++;
